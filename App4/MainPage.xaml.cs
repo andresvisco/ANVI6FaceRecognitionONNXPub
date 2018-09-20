@@ -5,7 +5,7 @@ using Windows.Media.MediaProperties;
 using Windows.Media.Capture;
 using System.Threading.Tasks;
 using System;
-using Windows.System.Threading;v
+using Windows.System.Threading;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -124,23 +124,35 @@ namespace App4
         private string identidadEncontradaTexto = string.Empty;
         public async Task<bool> IniciarModelo()
         {
-            LearningModelDeviceKind GetDeviceKind()
-            {
-                return LearningModelDeviceKind.Default;
-            }
-
+            
             var modelFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Assets/{_kModelFileName}"));
             _model = await LearningModel.LoadFromStorageFileAsync(modelFile);
-            _session = new LearningModelSession(_model, new LearningModelDevice(GetDeviceKind()));
+            _session = new LearningModelSession(_model, new LearningModelDevice(LearningModelDeviceKindSelected));
 
             return true;
         }
+        public LearningModelDeviceKind LearningModelDeviceKindSelected;
+        public ObservableCollection<LearningModelDeviceKind> learningModelDeviceKinds = new ObservableCollection<LearningModelDeviceKind>();
         public MainPage()
         {
             
             ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values["valorIdGroup"] = "1";
             this.InitializeComponent();
+            LearningModelDeviceKindSelected = LearningModelDeviceKind.Default;
+
+            var modelosKind = new List<LearningModelDeviceKind>()
+            {
+                LearningModelDeviceKind.Cpu,
+                LearningModelDeviceKind.Default,
+                LearningModelDeviceKind.DirectX,
+                LearningModelDeviceKind.DirectXHighPerformance,
+                LearningModelDeviceKind.DirectXMinPower
+            };
+            foreach (var item in modelosKind )
+            {
+                learningModelDeviceKinds.Add(item);
+            }
             NetworkInformation.NetworkStatusChanged += cambioConection;
             IniciarModelo().Wait(1000);
             
@@ -789,6 +801,13 @@ namespace App4
 
 
 
+
+        }
+
+        private void lstBoxModelo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var elementoSelected = ((Windows.UI.Xaml.Controls.Primitives.Selector)sender).SelectedIndex;
+            
 
         }
     }
