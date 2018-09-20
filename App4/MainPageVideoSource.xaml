@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="App4.MainPageVideoSource"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App4"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+            <ColumnDefinition Width="800"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="370"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0" Padding="10" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" Click="btnTomarFoto_Click" Name="btnTomarFoto">Volver</Button>
+            <Button Grid.Column="1" Visibility="Collapsed" Padding="10" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" Name="btnIniciarStream" Click="CameraStreamingButton_Click" >Iniciar Streamming</Button>
+            <Button Content="CargarVideo MP4" Padding="10" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
+            <Button Content="Stop" Padding="10" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_1" />
+            
+            <TextBlock Grid.Column="0" Padding="10" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Left" x:Name="txtResult" Width="445" Height="40" FocusVisualPrimaryBrush="#FFC5FF00" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Padding="10" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Left" x:Name="txtResultServicio" Width="445" Height="40" FocusVisualPrimaryBrush="#FFC5FF00" VerticalAlignment="Center"/>
+
+            <MediaElement HorizontalAlignment="Left" Height="100" Margin="62,198,0,0" Grid.Row="5" VerticalAlignment="Top" Width="100" x:Name="mediaPlayerUWP" />
+            <Border Visibility="Collapsed" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="4" Grid.Row="3" Grid.Column="0">
+                <Image x:Name="previewFoto" Visibility="Collapsed" Grid.ColumnSpan="4" Grid.Row="3" Grid.Column="0" Width="450" Height="450" HorizontalAlignment="Center" Stretch="Uniform"></Image>
+            </Border>
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="600" ></RowDefinition>
+                <RowDefinition Height="220"></RowDefinition>
+            </Grid.RowDefinitions>
+            <CaptureElement Grid.Row="1" x:Name="CamPreview" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Height="450" Width="600" />
+            <Canvas x:Name="VisualizationCanvas" Width="640" Height="360" PointerPressed="VisualizationCanvas_PointerPressed" Visibility="Visible" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" >
+                <!--<Image Source="Assets/SplashScreen.scale-200.png" Width="200" Height="200"></Image>
+                <Rectangle x:Name="rectangulo" Margin="0,100,10,10" FocusVisualPrimaryBrush="AliceBlue" Fill="Red" Width="30" Height="30"/>-->
+
+
+
+
+            </Canvas>
+        </Grid>
+
+    </Grid>
+</Page>

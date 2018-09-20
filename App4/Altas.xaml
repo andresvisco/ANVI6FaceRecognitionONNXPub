@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="App4.Altas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App4"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="900" Height="800">
+
+    <Page.Resources>
+        <Style x:Key="estiloBotones" TargetType="Button">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="FontSize" Value="11"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            
+        </Style>
+        <Style x:Key="estiloTextBox" TargetType="TextBox">
+            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="FontSize" Value="11"></Setter>
+            <Setter Property="Height" Value="10"></Setter>
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            
+            
+
+        </Style>
+    </Page.Resources>
+    <Grid Width="900" Height="800" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="450"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <Button Style="{StaticResource estiloBotones}" x:Name="btnCrearPersona" IsEnabled="True" Content="Crear Persona" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Click="Button_Click"/>
+            <TextBox Style="{StaticResource estiloTextBox}" x:Name="personaNombre" Margin="120,0,0,0" Grid.Row="0" Grid.Column="0" Text="Nombre" HorizontalAlignment="Left" ></TextBox>
+            <TextBox x:Name="statusCreacion" Margin="350,0,0,0" BorderBrush="White" BorderThickness="0" Grid.Row="0" Grid.Column="0" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Width="125" Height="28"/>
+            <Button Style="{StaticResource estiloBotones}" x:Name="btnAgregarCara" Content="Agregar Cara" IsEnabled="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Click="ButtonAgregarCara_Click"/>
+            <TextBox  Style="{StaticResource estiloTextBox}" x:Name="urlImagen" Margin="120,0,0,0" Grid.Row="1" Grid.Column="0" Text="urlImagen" HorizontalAlignment="Left" ></TextBox>
+            <Image  x:Name="imagenAltas" Grid.Row="5" Width="450" Height="450" HorizontalAlignment="Center" Stretch="Uniform"></Image>
+            <TextBox  Style="{StaticResource estiloTextBox}" BorderBrush="White" Width="50" BorderThickness="0" x:Name="urlImagenStatus" Margin="350,0,0,0" Grid.Row="1" Grid.Column="0" Text="" HorizontalAlignment="Left" />
+            <Button Style="{StaticResource estiloBotones}" x:Name="btnEntrenar" Content="Entrenar" IsEnabled="False" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="0" Click="ButtonEntrenar_Click" Margin="350,0,0,8"/>
+            <Button Style="{StaticResource estiloBotones}" Content="Listar Personas" HorizontalAlignment="Left" Click="Button_Click_1"  VerticalAlignment="Top" Grid.Row="2" Grid.Column="0"  Margin="0,0,0,0"/>
+            <TextBox x:Name="statusItem" BorderBrush="White" BorderThickness="0"  Grid.Row="4" Grid.Column="0" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Height="28"/>
+            <TextBox x:Name="statusItemEliminado" BorderBrush="White" BorderThickness="0"  Grid.Row="4" Grid.Column="0" Text="" HorizontalAlignment="Left" Margin="190, 0, 0, 0" VerticalAlignment="Top" Width="125" Height="28"/>
+
+            <Button Style="{StaticResource estiloBotones}" x:Name="delItem" Grid.Column="0" Grid.Row="4"  Background="Transparent" Margin="130, 0, 0, 0" Click="EliminarUsuario">
+                <SymbolIcon Symbol="Delete"/>
+            </Button>
+            
+            <Button Style="{StaticResource estiloBotones}" x:Name="btnSubirImagen" Content="SubirImagen" IsEnabled="False" HorizontalAlignment="Left" Click="ButtonSubirImagen_Click" Margin="225,0,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+
+        </Grid>
+        <Grid Grid.Column="1">
+
+            <ListView x:Name="itemListView" ItemsSource="{Binding Items}" IsItemClickEnabled="True" ItemClick="itemListView_ItemClick" FontSize="7" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

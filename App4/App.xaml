@@ -1,0 +1,19 @@
+﻿<Application
+    x:Class="App4.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App4"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+        BackgroundSource="Backdrop" TintColor="YellowGreen" TintOpacity=".6"/>
+            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
+        BackgroundSource="HostBackdrop" TintColor="#FFE3433B" TintOpacity=".8"/>
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="/Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

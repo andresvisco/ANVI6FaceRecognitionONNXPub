@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="App5.MainNueva"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid>
+       
+
+        <NavigationView Grid.Column="0"
+                        IsSettingsVisible="True" 
+                        x:Name="navView"
+                        ItemInvoked="navView_ItemInvoked"
+                        Loaded="navView_Loaded"
+                        BackRequested="navView_BackRequested"
+                        IsPaneOpen="True"
+                        PaneTitle="Face Recognition"
+                        
+                        >
+            <NavigationView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Margin="24,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                    </Grid>
+                </DataTemplate>
+            </NavigationView.HeaderTemplate>
+            <NavigationView.MenuItems>
+
+                <NavigationViewItem x:Uid="HomeNavItem" Content="Home" Tag="home">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE10F;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator/>
+                <NavigationViewItemHeader Content="Face API"/>
+                <NavigationViewItem x:Uid="AppsNavItem" Icon="Video" Content="Reconocimiento" Tag="reconocimiento" />
+                <NavigationViewItem x:Uid="GamesNavItem" Icon="AllApps" Content="Altas" Tag="altas"/>
+
+
+            </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame" Grid.Column="1" Margin="24,0,0,0" Width="900" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition/>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </NavigationView>
+
+    </Grid>
+</Page>

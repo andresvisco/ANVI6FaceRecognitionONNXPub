@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="App5.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="600" Height="400">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txtKey" Width="400" HorizontalAlignment="Left" Text="Key" Grid.Row="0" Margin="0,0,0,25" VerticalAlignment="Stretch"></TextBox>
+        <Button x:Name="btnGuardar" Width="150" Content="Guardar" Grid.Row="2" Click="btnGuardar_Click" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top"></Button>
+        <TextBox x:Name="txtKeyCV" Width="400" HorizontalAlignment="Left" Text="Key" Grid.Row="1" Margin="0,10,0,8" VerticalAlignment="Stretch"/>
+        <TextBlock HorizontalAlignment="Left" Margin="405,0,0,0" Text="Face API Key" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="168"/>
+
+    </Grid>
+</Page>
