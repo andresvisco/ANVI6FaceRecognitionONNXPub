@@ -235,20 +235,21 @@ namespace App4
         }
 
         
-        private void CameraStreamingButton_Click(object sender, RoutedEventArgs e)
+        private async void CameraStreamingButton_Click(object sender, RoutedEventArgs e)
         {
             Analytics.TrackEvent("Click en IniciarStreamming");
 
             IdentidadEncontrada = "";
             if (this.currentState == ScenarioState.Streaming)
             {
+                
                 //this.rootPage.NotifyUser(string.Empty, NotifyType.StatusMessage);
                 this.ChangeScenarioState(ScenarioState.Idle);
                 btnIniciarStream.Content = "Iniciar Streamming";
             }
             else
             {
-
+                await IniciarModelo();
                 //this.rootPage.NotifyUser(string.Empty, NotifyType.StatusMessage);
                 this.ChangeScenarioState(ScenarioState.Streaming);
                 btnIniciarStream.Content = "Parar Streamming";
@@ -804,10 +805,34 @@ namespace App4
 
         }
 
-        private void lstBoxModelo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void lstBoxModelo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _model = null;
+            _session = null;
             var elementoSelected = ((Windows.UI.Xaml.Controls.Primitives.Selector)sender).SelectedIndex;
-            
+            switch (elementoSelected)
+            {
+                case 5:
+                    LearningModelDeviceKindSelected = LearningModelDeviceKind.Cpu;
+                    await IniciarModelo();
+                    break;
+                case 1:
+                    LearningModelDeviceKindSelected = LearningModelDeviceKind.Default;
+                    await IniciarModelo();
+                    break;
+                case 2:
+                    LearningModelDeviceKindSelected = LearningModelDeviceKind.DirectX;
+                    await IniciarModelo();
+                    break;
+                case 3:
+                    LearningModelDeviceKindSelected = LearningModelDeviceKind.DirectXHighPerformance;
+                    await IniciarModelo();
+                    break;
+                case 4:
+                    LearningModelDeviceKindSelected = LearningModelDeviceKind.DirectXMinPower;
+                    await IniciarModelo();
+                    break;
+            }
 
         }
     }
