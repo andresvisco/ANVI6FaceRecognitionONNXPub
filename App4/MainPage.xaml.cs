@@ -257,8 +257,6 @@ namespace App4
         }
         private void MediaCapture_CameraStreamFailed(MediaCapture sender, object args)
         {
-            // MediaCapture is not Agile and so we cannot invoke its methods on this caller's thread
-            // and instead need to schedule the state change on the UI thread.
             var ignored = this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 ChangeScenarioState(ScenarioState.Idle);
@@ -300,8 +298,6 @@ namespace App4
             catch (System.UnauthorizedAccessException)
             {
                 txtResult.Text = "El usuario no acepto utilizar su cámara";
-                // If the user has disabled their webcam this exception is thrown; provide a descriptive message to inform the user of this fact.
-                //this.rootPage.NotifyUser("Webcam is disabled or access to the webcam is disabled for this app.\nEnsure Privacy Settings allow webcam usage.", NotifyType.ErrorMessage);
                 successful = false;
             }
             catch (Exception ex)
@@ -368,7 +364,6 @@ namespace App4
         }
         private async void ChangeScenarioState(ScenarioState newState)
         {
-            // Disable UI while state change is in progress
             switch (newState)
             {
                 case ScenarioState.Idle:
@@ -551,8 +546,6 @@ namespace App4
         {
             byte[] array = null;
 
-            // First: Use an encoder to copy from SoftwareBitmap to an in-mem stream (FlushAsync)
-            // Next:  Use ReadAsync on the in-mem stream to get byte[] array
 
             using (ms = new InMemoryRandomAccessStream())
             {
@@ -579,8 +572,6 @@ namespace App4
                 using (var stream = new InMemoryRandomAccessStream())
                 {
                     stream.WriteAsync(byteArray.AsBuffer()).GetResults();
-                    // I made this one synchronous on the UI thread;
-                    // this is not a best practice.
                     var image = new SoftwareBitmap(BitmapPixelFormat.Bgra8, 100, 100,BitmapAlphaMode.Premultiplied);
                     stream.Seek(0);
 
