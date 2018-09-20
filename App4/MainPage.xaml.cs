@@ -5,7 +5,7 @@ using Windows.Media.MediaProperties;
 using Windows.Media.Capture;
 using System.Threading.Tasks;
 using System;
-using Windows.System.Threading;
+using Windows.System.Threading;v
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
 using System.Runtime.InteropServices.WindowsRuntime;
